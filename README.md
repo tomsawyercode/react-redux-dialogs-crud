@@ -25,4 +25,8 @@ toast, snack bar, banners, or also side columns contents.
 [Full description in dev.to](https://dev.to).
 
 
-![Img](./CreateDialog.png)
+![Img](./imgcreatedialog.png)
+
+![Img](./imgadvice.png)
+
+
