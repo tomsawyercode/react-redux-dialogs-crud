@@ -13,16 +13,13 @@ export default function ClientsReducer(state = initialState,action)
  {
   switch (action.type) {
     case 'CLIENTS_FETCH_BEGIN':
-      // Mark the state as "loading" so we can show a spinner or something
-      // Also, reset any errors. We're starting fresh.
       return {
         ...state,
-        status: 'loading'        
+        status: 'loading' // show a spinner or something       
       };
 
     case 'CLIENTS_FETCH_SUCCESS':
-      // All done: set loading "false".
-      // Also, replace the items with the ones from the server      
+      // All done: set status = "success", and replace the items with api response      
       return {
         ...state,
         status: 'success',        
@@ -51,10 +48,7 @@ export default function ClientsReducer(state = initialState,action)
           formMsg: '',          
         };   
 
-    case 'CLIENT_FORM_RESPONSE':
-    
-      //console.log("Farms reducer: CLIENT_FORM_RESPONSE") ;
-      //console.log(action.payload.status);
+    case 'CLIENT_FORM_RESPONSE':    
       
       return {
         ...state,

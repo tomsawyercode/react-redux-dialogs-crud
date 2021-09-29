@@ -15,8 +15,6 @@ export  function LV(props) {
         
     )
 }
-//  justifyContent: si la toma -main axis
-//, minWidth:'110px' alignContent: 'stretch'
 
 export  function L(props) {
 

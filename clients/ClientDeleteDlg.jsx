@@ -17,10 +17,6 @@ import { connect } from "react-redux";
 import { actClientDelete, actClientFormInit } from "./ClientsActions";
 
 
-//const useMountEffect = (fun) => useEffect(fun, []);
-//https://stackoverflow.com/questions/53120972/how-to-call-loading-function-with-react-useeffect-only-once
-
-
 function ClientDeleteDlg(props){
 
 
@@ -55,7 +51,7 @@ function ClientDeleteDlg(props){
 
   var advice = null;         
   if (status === "loading") advice = "Procesing...";    
-  if (status === "error") advice =  "Error: " + msg;  //network error       
+  if (status === "error") advice =  "Error: " + msg;  
   if (status === "success") {  return null; }    
       
   return (
@@ -65,8 +61,8 @@ function ClientDeleteDlg(props){
         <form onSubmit={handleSubmit} >
         
            
-        <Typography variant="body1" style={{textIndent:'7px',color:'black',fontWeight:'600'}}> 
-            Please confirm action   </Typography> 
+        <Typography variant="body1" style={{textIndent:'7px',color:'black',fontWeight:'400'}}> 
+            Please confirm action ?  </Typography> 
         
         
         <div style={{           

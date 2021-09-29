@@ -1,5 +1,5 @@
 import React from 'react';
-import ModalRoot from './modal/modalRoot';
+import ModalRoot from './modal/ModalRoot';
 import ClientsMain from './clients/ClientsMain';
 
 function App() {

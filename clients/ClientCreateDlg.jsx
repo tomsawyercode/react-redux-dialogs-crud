@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-//import Typography from '@material-ui/core/Typography';
+
+
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField';
@@ -19,18 +20,11 @@ import { connect } from "react-redux";
 import { actClientCreate, actClientFormInit } from "./ClientsActions";
 
 
-//const useMountEffect = (fun) => useEffect(fun, []);
-//https://stackoverflow.com/questions/53120972/how-to-call-loading-function-with-react-useeffect-only-once
-
-
 function ClientCreateDlg(props){
 
-  const initial = {  name:'',phone:'', mail:'',};    
-    
-   
+  const initial = {  name:'',phone:'', mail:'',}; 
   const [state, setState] = useState(initial);  
-  const fullScreen = useMediaQuery('(max-width:600px)');// if width<600 go fullscreen
-
+  const fullScreen = useMediaQuery('(max-width:500px)');// if width<500 go fullscreen
 
   //Mount - Unmount  
   useEffect(() => {
@@ -40,11 +34,7 @@ function ClientCreateDlg(props){
          props.dispatch(actClientFormInit());  //componentWillUnmount    
          // console.log("componentWillUnmount");
         };
-      }, []);// try with props 
-  // https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies
-  //  https://stackoverflow.com/questions/63205014/react-hook-useeffect-has-a-missing-dependency-props
-
-
+      }, []);
  
   //componentDidUpdate  status listener  
   useEffect(() => {
@@ -66,14 +56,13 @@ function ClientCreateDlg(props){
   const handleCancel = () => {    
     props.dispatch({type: 'CLOSE_DLG' });
   } ; 
-
  
     
-    const { status, msg } = props; //server api responses   
+    const { status, msg } = props; // server api responses   
 
     var advice = null;         
     if (status === "loading") advice = "Procesing...";    
-    if (status === "error") advice =  "Error: " + msg;  //network error       
+    if (status === "error") advice =  "Error: " + msg;   
     if (status === "success") {  return null; }    
     
   
@@ -108,13 +97,9 @@ function ClientCreateDlg(props){
 }
 
 
-
 const mapStateToPropsForm = state => ({    
   status:state.clients.formStatus,
   msg:state.clients.formMsg,   
 });
 
 export default connect(mapStateToPropsForm)(ClientCreateDlg);
-//
-//export default withStyles(useStyles)(HarvestImportLogCsv);
-//export default (HarvestImportLogCsv);

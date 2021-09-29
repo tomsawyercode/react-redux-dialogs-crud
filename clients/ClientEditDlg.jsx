@@ -18,11 +18,6 @@ import {Ad} from '../controls/LabelValue';
 import { connect } from "react-redux";
 import { actClientCreate, actClientFormInit } from "./ClientsActions";
 
-
-//const useMountEffect = (fun) => useEffect(fun, []);
-//https://stackoverflow.com/questions/53120972/how-to-call-loading-function-with-react-useeffect-only-once
-
-
 function ClientEditDlg(props){
 
   
@@ -34,23 +29,17 @@ function ClientEditDlg(props){
     return item[0]
       } 
     
-  // const initial = selectItem(props.id);
   const [state, setState] = useState(selectItem(props.id));  
-  const fullScreen = useMediaQuery('(max-width:600px)');// if width<600 go fullscreen
+  const fullScreen = useMediaQuery('(max-width:500px)');// if width<500 go fullscreen
 
 
   //Mount - Unmount  
   useEffect(() => {
-         //props.dispatch(actClientFormInit());  //componentMount    
-         //console.log("component Mount");
         return () => {
          props.dispatch(actClientFormInit());  //componentWillUnmount    
          // console.log("componentWillUnmount");
         };
-      }, []);// try with props 
-  // https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies
-  //  https://stackoverflow.com/questions/63205014/react-hook-useeffect-has-a-missing-dependency-props
-
+      }, []);
 
  
   //componentDidUpdate  status listener  
@@ -65,7 +54,7 @@ function ClientEditDlg(props){
   };
 
   const handleSubmit = (e) => {
-    console.log("handleSubmit:",state)
+    //console.log("handleSubmit:",state)
     e.preventDefault();  // prevent a browser reload/refresh
     props.dispatch(actClientCreate(state)); 
   };
@@ -73,14 +62,13 @@ function ClientEditDlg(props){
   const handleCancel = () => {    
     props.dispatch({type: 'CLOSE_DLG' });
   } ; 
-
  
     
     const { status, msg } = props; //server api responses   
 
     var advice = null;         
     if (status === "loading") advice = "Procesing...";    
-    if (status === "error") advice =  "Error: " + msg;  //network error       
+    if (status === "error") advice =  "Error: " + msg;  
     if (status === "success") {  return null; }    
     
   
@@ -114,7 +102,6 @@ function ClientEditDlg(props){
 
 }
 
-//  <div style={{minWidth:'300px',padding:"2px",display: "flex" ,flexDirection: "column"}}></div>
 
 const mapStateToPropsForm = state => ({    
   items: state.clients.items, 
@@ -123,6 +110,3 @@ const mapStateToPropsForm = state => ({
 });
 
 export default connect(mapStateToPropsForm)(ClientEditDlg);
-//
-//export default withStyles(useStyles)(HarvestImportLogCsv);
-//export default (HarvestImportLogCsv);

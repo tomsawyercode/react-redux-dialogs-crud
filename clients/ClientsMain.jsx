@@ -1,36 +1,30 @@
 import React from "react";
-import { withStyles } from '@material-ui/core/styles';
-//import Fragment from "react";
 import { connect } from "react-redux";
 
-import Typography from '@material-ui/core/Typography';
-//import Box from '@material-ui/core/Box';
-//import Checkbox from '@material-ui/core/Checkbox';
 
+// Material Controls -----
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-//import ListItemIcon from '@material-ui/core/ListItemIcon';
-//import ListItemText from '@material-ui/core/ListItemText';
-//import Divider from '@material-ui/core/Divider';
-//import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-//import Avatar from '@material-ui/core/Avatar';
 
+// Custom Control --------
 import {L,V,LV} from '../controls/LabelValue';
 
-// Icons -----------
+// Icons -----------------
 import IconButton from "@material-ui/core/IconButton";
 
-
+// Icons -----------------
 import EditIcon from '@material-ui/icons/Edit';//Pencil
 import DeleteIcon from '@material-ui/icons/Delete';
-
-//import AddCircleIcon from '@material-ui/icons/AddCircleOutline';
 import AddCircleIcon from '@material-ui/icons/AddCircle';//black fill
 
 
 // Dialogs ---------------
 
-import {showDialog} from '..//modal/modalActions';
+import {showDialog} from '../modal/ModalActions';
+
+// Activity Dialogs ------
 
 import ClientCreateDlg from "./ClientCreateDlg";
 import ClientEditDlg from "./ClientEditDlg";
@@ -95,26 +89,16 @@ class ClientsMain extends React.Component {
     }    
   }
  
-  componentWillUnmount(){
-    //console.log( "Unmount");          
-    
-  }
-
   addClient = () => {  this.props.dispatch(showDialog(ClientCreateDlg))  };
   editClient = (id) => {  this.props.dispatch(showDialog(ClientEditDlg,{id}))  };
   deleteClient = (id) => {  this.props.dispatch(showDialog(ClientDeleteDlg,{id}))  };
  
   
-
-
   render() {
-    console.log("Render, isDirty:",this.props.isDirty);
+    //console.log("Render, isDirty:",this.props.isDirty);
     const { status, msg, items } = this.props;
     
-    //console.log("props keys:",Object.keys(this.props.items)); 
-    //console.log("items.length:",this.props.items.length); 
-    //console.log("items:",items[0]);
-    
+   
     const { classes } = this.props; 
     var advice= items && '('+items.length+')';
     if (status === "error") { advice= 'Error:'+msg }
