@@ -27,6 +27,6 @@ toast, snack bar, banners, or also side columns contents.
 
 ![Img](./imgcreatedialog.png)
 
-![Img](./imgadvice.png)
+![Advices](./imgadvice.png)
 
 
