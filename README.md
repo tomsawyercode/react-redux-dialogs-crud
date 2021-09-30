@@ -2,7 +2,7 @@
 
 A CRUD example that show how to use redux for inject dialogs in the main content app area.
 
-It is a react client phone contacts CRUD implented with MATERIAL-UI Dialogs.
+It is a react client phone contacts CRUD implemented with MATERIAL-UI Dialogs.
 
 The opening and closing of the dialogue will be made with redux. Injecting the dialog in the props of a "Dialog-root" component.
  Also the asynchronic interaction of the dialog with the api will be handled by redux thunk.
